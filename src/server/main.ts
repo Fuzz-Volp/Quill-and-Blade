@@ -1,12 +1,34 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import logging from "./config/logging";
+import config from "./config/config";
+import { connectDB } from "./config/db";
+import checkToken from "./middleware/checkToken";
+import ensureLoggedIn from "./middleware/ensureLoggedIn";
 
 const app = express();
 
-app.get("/hello", (_, res) => {
-  res.send("Hello Vite + React + TypeScript!");
+connectDB();
+
+/** Config */
+
+app.use((req, res, next) => {
+  res.locals.data = {};
+  next();
 });
 
-ViteExpress.listen(app, 3000, () =>
-  console.log("Server is listening on port 3000...")
+// Check Token
+app.use(checkToken);
+
+/** Route */
+
+// API Route
+app.get("/api", (_, res) => {
+  res.json({ message: "The API is alive!!" });
+});
+
+ViteExpress.listen(app, 3001, () =>
+  logging.info(
+    `Server is running at ${config.server.host}:${config.server.port} ...`
+  )
 );
