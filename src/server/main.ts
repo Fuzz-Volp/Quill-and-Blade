@@ -5,6 +5,7 @@ import config from "./config/config";
 import { connectDB } from "./config/db";
 import checkToken from "./middleware/checkToken";
 import ensureLoggedIn from "./middleware/ensureLoggedIn";
+import user from "./routes/api/user";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 app.use(checkToken);
 
 /** Route */
+app.use("/api/users", user);
 
 // API Route
 app.get("/api", (_, res) => {

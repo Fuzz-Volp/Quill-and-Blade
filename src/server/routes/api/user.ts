@@ -6,6 +6,7 @@ import {
 } from "../../controllers/api/user";
 
 import ensureLoggedIn from "../../middleware/ensureLoggedIn";
+
 const router = express.Router();
 
 // POST /api/users/login
@@ -16,3 +17,5 @@ router.post("/", dataController.create, apiController.auth);
 
 //GET /api/users/check-token
 router.get("/check-token", ensureLoggedIn, checkToken);
+
+export = router;
