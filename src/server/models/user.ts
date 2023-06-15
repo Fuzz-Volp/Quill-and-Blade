@@ -5,10 +5,10 @@ import config from "../config/config";
 
 const UserSchema: Schema = new Schema(
   {
-    email: { type: String, required: true, toLowerCase: true, unique: true },
+    email: { type: String, required: true, lowercase: true, unique: true },
+    password: { type: String, required: true, minLength: 6, trim: true },
     firstName: String,
     lastName: String,
-    password: { type: String, required: true, minLength: 6, trim: true },
   },
   {
     timestamps: true,
@@ -17,7 +17,9 @@ const UserSchema: Schema = new Schema(
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = await bcrypt.hash(this.password, config.bcrypt.salt);
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  this.password = await bcrypt.hash(this.password, salt);
   return next();
 });
 

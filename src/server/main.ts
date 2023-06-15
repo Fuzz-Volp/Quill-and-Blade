@@ -6,12 +6,16 @@ import { connectDB } from "./config/db";
 import checkToken from "./middleware/checkToken";
 import ensureLoggedIn from "./middleware/ensureLoggedIn";
 import user from "./routes/api/user";
+import bodyParser from "body-parser";
 
 const app = express();
 
 connectDB();
 
 /** Config */
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.locals.data = {};

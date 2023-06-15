@@ -23,9 +23,9 @@ const config = {
     host: "localhost",
     port: PORT,
   },
-  bcrypt: {
-    salt: SALT,
-  },
+
+  salt: SALT,
+
   secret: SECRET,
 };
 
