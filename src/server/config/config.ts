@@ -24,8 +24,6 @@ const config = {
     port: PORT,
   },
 
-  salt: SALT,
-
   secret: SECRET,
 };
 
