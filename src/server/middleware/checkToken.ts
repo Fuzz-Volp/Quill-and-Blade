@@ -1,7 +1,7 @@
 // checkToken.ts
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { IUser } from "../@types/global";
+import { IUser } from "../../@types/global";
 import config from "../config/config";
 
 interface AuthenticatedRequest extends Request {

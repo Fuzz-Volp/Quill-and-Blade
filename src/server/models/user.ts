@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
-import { IUser } from "../@types/global";
+import { IUser } from "../../@types/global";
 import bcrypt from "bcrypt";
-import config from "../config/config";
 
 const UserSchema: Schema = new Schema(
   {
@@ -23,4 +22,6 @@ UserSchema.pre("save", async function (next) {
   return next();
 });
 
-export default model<IUser>("User", UserSchema);
+const User = model<IUser>("User", UserSchema);
+
+export default User;

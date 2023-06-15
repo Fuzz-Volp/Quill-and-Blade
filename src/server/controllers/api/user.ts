@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../../models/user";
-import { IUser } from "../../@types/global";
+import { IUser } from "../../../@types/global";
 import config from "../../config/config";
 import logging from "../../config/logging";
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IUser } from "../@types/global";
+import { IUser } from "../../@types/global";
 
 interface AuthenticatedRequest extends Request {
   user?: IUser;
