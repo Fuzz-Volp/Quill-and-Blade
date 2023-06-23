@@ -1,67 +1,67 @@
 import { Request, Response, NextFunction } from "express";
-import Campaign from "../../models/campaign";
+import Story from "../../models/story";
 import logging from "../../config/logging";
 
-const namespace = "Campaign Controller";
+const namespace = "Story Controller";
 
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundCampaigns = await Campaign.find({});
-      logging.info(foundCampaigns, namespace);
-      res.locals.data.stories = foundCampaigns;
+      const foundStories = await Story.find({});
+      logging.info(foundStories, namespace);
+      res.locals.data.stories = foundStories;
       next();
     } catch (error) {
-      res.status(404).json({ message: "Campaigns Weren't Found" });
+      res.status(404).json({ message: "Stories Weren't Found" });
       logging.error(error, namespace);
     }
   },
   async destroy(req: Request, res: Response, next: NextFunction) {
     try {
-      const deletedCampaign = await Campaign.findByIdAndDelete(req.params.id);
-      logging.info(deletedCampaign, namespace);
+      const deletedStory = await Story.findByIdAndDelete(req.params.id);
+      logging.info(deletedStory, namespace);
       res.locals.data = {};
-      res.locals.data.story = deletedCampaign;
+      res.locals.data.story = deletedStory;
       next();
     } catch (error) {
-      res.status(400).json({ message: "Couldn't Delete the Campaign" });
+      res.status(400).json({ message: "Couldn't Delete the Story" });
       logging.error(error, namespace);
     }
   },
   async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const updatedCampaign = await Campaign.findByIdAndUpdate(
+      const updatedStory = await Story.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true }
       );
-      logging.info(updatedCampaign, namespace);
-      res.locals.data.story = updatedCampaign;
+      logging.info(updatedStory, namespace);
+      res.locals.data.story = updatedStory;
       next();
     } catch (error) {
-      res.status(400).json({ message: "Couldn't Update the Campaign" });
+      res.status(400).json({ message: "Couldn't Update the Story" });
       logging.error(error, namespace);
     }
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdCampaign = await Campaign.create({ story: req.body.story });
-      logging.info(createdCampaign, namespace);
-      res.locals.data.story = createdCampaign;
+      const createdStory = await Story.create(req.body);
+      logging.info(createdStory, namespace);
+      res.locals.data.story = createdStory;
       next();
     } catch (error) {
-      res.status(400).json({ message: "Error Creating Campaign" });
+      res.status(400).json({ message: "Error Creating Story" });
       logging.error(error, namespace);
     }
   },
   async show(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundCampaign = await Campaign.findById(req.params.id);
-      logging.info(foundCampaign, namespace);
-      res.locals.data.story = foundCampaign;
+      const foundStory = await Story.findById(req.params.id);
+      logging.info(foundStory, namespace);
+      res.locals.data.story = foundStory;
       next();
     } catch (error) {
-      res.status(404).json({ message: "Campaign wasn't found" });
+      res.status(404).json({ message: "Story wasn't found" });
       logging.error(error, namespace);
     }
   },

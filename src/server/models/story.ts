@@ -3,7 +3,7 @@ import { IStory } from "../../@types/global";
 
 const storySchema: Schema = new Schema(
   {
-    title: { type: String, required: true },
+    header: { type: String, required: true },
     body: { type: String, required: true },
   },
   {

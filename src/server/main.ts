@@ -5,8 +5,15 @@ import config from "./config/config";
 import { connectDB } from "./config/db";
 import checkToken from "./middleware/checkToken";
 import ensureLoggedIn from "./middleware/ensureLoggedIn";
-import user from "./routes/api/user";
 import bodyParser from "body-parser";
+import user from "./routes/api/user";
+import campaign from "./routes/api/campaign";
+import chapter from "./routes/api/chapter";
+import game from "./routes/api/game";
+import npc from "./routes/api/npc";
+import player from "./routes/api/player";
+import story from "./routes/api/story";
+import storyline from "./routes/api/storyline";
 
 const app = express();
 
@@ -25,8 +32,15 @@ app.use((req, res, next) => {
 // Check Token
 app.use(checkToken);
 
-/** Route */
+/** Routes */
 app.use("/api/users", user);
+app.use("/api/campaign", campaign);
+app.use("/api/chapter", chapter);
+app.use("/api/game", game);
+app.use("/api/npc", npc);
+app.use("/api/player", player);
+app.use("/api/story", story);
+app.use("/api/storyline", storyline);
 
 // API Route
 app.get("/api", (_, res) => {
