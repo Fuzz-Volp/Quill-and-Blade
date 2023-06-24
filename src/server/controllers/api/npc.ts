@@ -7,7 +7,7 @@ const namespace = "NPC Controller";
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundNPCs = await NPC.find({}).populate("Storyline").exec();
+      const foundNPCs = await NPC.find({});
       logging.info(foundNPCs, namespace);
       res.locals.data.npcs = foundNPCs;
       next();
@@ -43,7 +43,7 @@ const dataController = {
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdNPC = await NPC.create({ npc: req.body.npc });
+      const createdNPC = await NPC.create(req.body);
       logging.info(createdNPC, namespace);
       res.locals.data.npc = createdNPC;
       next();

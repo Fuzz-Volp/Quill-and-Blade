@@ -6,7 +6,7 @@ const npcSchema: Schema = new Schema(
     name: { type: String, required: true },
     occupation: { type: String, required: true },
     class: { type: String, required: true },
-    level: { type: Number, default: 0 },
+    level: { type: Number, default: 1 },
     background: { type: String, required: true },
     associations: [String],
   },
