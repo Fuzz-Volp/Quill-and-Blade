@@ -15,11 +15,10 @@ export interface IGame extends Document {
 }
 
 export interface ICampaign extends Document {
-  chapter: number;
+  chapter: Types.ObjectId[] | IChapter;
   day: string;
   progress: string;
-  story: Types.ObjectId | IStory;
-  player: Types.ObjectId;
+  player: Types.ObjectId[] | IPlayer;
   location: string;
   session: ISession[];
   notes?: string;
@@ -30,15 +29,23 @@ export interface ICampaign extends Document {
   getSessionDates(): Date[];
 }
 
-export interface IStory extends Document {
+export interface IChapter extends Document {
   title: string;
+  story: Types.ObjectId[] | IStory[];
+}
+
+export interface IStory extends Document {
+  header?: string;
+  subheader?: string;
   body: string;
+  check?: string;
+  encounter?: Types.ObjectId[] | IEncounter[];
 }
 
 export interface IPlayer extends Document {
   name: string;
-  progress: number;
-  storyline: Types.ObjectId[] | IStoryLine;
+  level: number;
+  storyline: Types.ObjectId[] | IStoryLine[];
   completedSessions: number;
   character?: string;
   notes?: string;
@@ -47,10 +54,24 @@ export interface IPlayer extends Document {
 export interface IStoryline extends Document {
   title: string;
   body: string;
-  chapters: number;
+  chapters: Types.ObjectId[] | IChapter;
   completedChapters: number;
   involvedPlayers: Types.ObjectId[];
   notes?: string;
+}
+
+export interface INPC extends Document {
+  name: string;
+  occupation: string;
+  class: string;
+  level: number;
+  background: string;
+  associations?: string;
+}
+
+export interface IEncounter extends Document {
+  title: string;
+  link: string;
 }
 
 export interface ISession {
@@ -74,3 +95,5 @@ export interface CampaignState {
 
   fetchSessionData: (campaignId: string) => Promise<void>;
 }
+
+export interface INavProps {}
