@@ -7,7 +7,9 @@ const namespace = "Game Controller";
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundGames = await Game.find({}).populate("Campaign").exec();
+      const foundGames = await Game.find({})
+        .populate({ path: "campaign", options: { strictPopulate: false } })
+        .exec();
       logging.info(foundGames, namespace);
       res.locals.data.games = foundGames;
       next();
@@ -45,7 +47,7 @@ const dataController = {
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdGame = await Game.create({ game: req.body.game });
+      const createdGame = await Game.create(req.body);
       logging.info(createdGame, namespace);
       res.locals.data.game = createdGame;
       next();
@@ -56,7 +58,9 @@ const dataController = {
   },
   async show(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundGame = await Game.findById(req.params.id);
+      const foundGame = await Game.findById(req.params.id)
+        .populate({ path: "campaign", options: { strictPopulate: false } })
+        .exec();
       logging.info(foundGame, namespace);
       res.locals.data.game = foundGame;
       next();

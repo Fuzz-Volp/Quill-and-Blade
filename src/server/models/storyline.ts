@@ -5,10 +5,10 @@ const StorylineSchema: Schema = new Schema(
   {
     title: { type: String, required: true },
     body: { type: String, required: true },
-    chapters: { type: Number, default: 0 },
+    chapters: { type: Types.ObjectId, ref: "Chapter" },
     completedChapters: { type: Number, default: 0 },
     involvedPlayers: [{ type: Types.ObjectId, ref: "Player" }],
-    involvedNPC: [{ type: Types.ObjectId, ref: "NPC", required: true }],
+    involvedNPC: [{ type: Types.ObjectId, ref: "NPC" }],
     notes: String,
   },
   {

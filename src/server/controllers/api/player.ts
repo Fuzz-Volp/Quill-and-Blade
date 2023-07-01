@@ -7,7 +7,9 @@ const namespace = "Player Controller";
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundPlayers = await Player.find({}).populate("Storyline").exec();
+      const foundPlayers = await Player.find({})
+        .populate({ path: "storyline", options: { strictPopulate: false } })
+        .exec();
       logging.info(foundPlayers, namespace);
       res.locals.data.players = foundPlayers;
       next();
@@ -45,7 +47,7 @@ const dataController = {
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdPlayer = await Player.create({ player: req.body.player });
+      const createdPlayer = await Player.create(req.body);
       logging.info(createdPlayer, namespace);
       res.locals.data.player = createdPlayer;
       next();

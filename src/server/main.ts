@@ -14,6 +14,7 @@ import npc from "./routes/api/npc";
 import player from "./routes/api/player";
 import story from "./routes/api/story";
 import storyline from "./routes/api/storyline";
+import encounter from "./routes/api/encounter";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use("/api/npc", npc);
 app.use("/api/player", player);
 app.use("/api/story", story);
 app.use("/api/storyline", storyline);
+app.use("/api/encounter", encounter);
 
 // API Route
 app.get("/api", (_, res) => {

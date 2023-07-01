@@ -8,8 +8,9 @@ const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
       const foundStoryLines = await StoryLine.find({})
-        .populate("Player")
-        .populate("NPC")
+        .populate({ path: "chapter", options: { strictPopulate: false } })
+        .populate({ path: "Player", options: { strictPopulate: false } })
+        .populate({ path: "NPC", options: { strictPopulate: false } })
         .exec();
       logging.info(foundStoryLines, namespace);
       res.locals.data.storyLines = foundStoryLines;
@@ -48,9 +49,7 @@ const dataController = {
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdStoryLine = await StoryLine.create({
-        storyLine: req.body.storyLine,
-      });
+      const createdStoryLine = await StoryLine.create(req.body);
       logging.info(createdStoryLine, namespace);
       res.locals.data.storyLine = createdStoryLine;
       next();

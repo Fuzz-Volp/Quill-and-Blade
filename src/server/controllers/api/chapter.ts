@@ -7,7 +7,9 @@ const namespace = "Chapter Controller";
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundChapters = await Chapter.find({}).populate("Storyline").exec();
+      const foundChapters = await Chapter.find({})
+        .populate({ path: "story", options: { strictPopulate: false } })
+        .exec();
       logging.info(foundChapters, namespace);
       res.locals.data.chapters = foundChapters;
       next();
@@ -45,9 +47,7 @@ const dataController = {
   },
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const createdChapter = await Chapter.create({
-        chapter: req.body.chapter,
-      });
+      const createdChapter = await Chapter.create(req.body);
       logging.info(createdChapter, namespace);
       res.locals.data.chapter = createdChapter;
       next();

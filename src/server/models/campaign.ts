@@ -4,10 +4,10 @@ import { ISession } from "../../@types/global";
 
 const campaignSchema: Schema = new Schema(
   {
-    chapter: { type: Types.ObjectId, ref: "Chapter", required: true },
+    chapter: [{ type: Types.ObjectId, ref: "Chapter", required: true }],
     day: { type: String, required: true },
     progress: { type: String, required: true },
-    player: { type: Types.ObjectId, ref: "Player", required: true },
+    player: [{ type: Types.ObjectId, ref: "Player", required: true }],
     location: { type: String, required: true },
     session: [{ date: { type: Date, required: true } }],
     notes: String,

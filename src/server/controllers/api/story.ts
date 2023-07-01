@@ -7,7 +7,9 @@ const namespace = "Story Controller";
 const dataController = {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const foundStories = await Story.find({});
+      const foundStories = await Story.find({})
+        .populate({ path: "encounter", options: { strictPopulate: false } })
+        .exec();
       logging.info(foundStories, namespace);
       res.locals.data.stories = foundStories;
       next();
