@@ -1,4 +1,5 @@
 import { Document, Types } from "mongoose";
+import { JSXElementConstructor, ReactNode } from "react";
 import { Type } from "typescript";
 
 /** Server */
@@ -11,7 +12,7 @@ export interface IUser extends Document {
 }
 export interface IGame extends Document {
   title: string;
-  campaign: Type.ObjectId | ICampaign;
+  campaign: Types.ObjectId | ICampaign;
 }
 
 export interface ICampaign extends Document {
@@ -45,7 +46,7 @@ export interface IStory extends Document {
 export interface IPlayer extends Document {
   name: string;
   level: number;
-  storyline: Types.ObjectId[] | IStoryLine[];
+  storyline: Types.ObjectId[] | IStoryline[];
   completedSessions: number;
   character?: string;
   notes?: string;
@@ -97,3 +98,15 @@ export interface CampaignState {
 }
 
 export interface INavProps {}
+export interface IFooterProps {}
+export interface IHomeProps {}
+export interface IAboutProps {}
+export interface IContactProps {}
+export interface IGamesProps {}
+
+export interface IRoute {
+  name: string;
+  path: string;
+  element: FC<any>;
+  exact: boolean;
+}

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { INavProps } from "../../../@types/global";
 
-const Nav: React.FC<INavProps> = () => {
+export const Nav: React.FC<INavProps> = () => {
   return (
-    <div>
-      <nav>
+    <div className="flex flex-row">
+      <nav className="">
         <ul>
           <li>
             <Link to={"/"}>🏠</Link>
