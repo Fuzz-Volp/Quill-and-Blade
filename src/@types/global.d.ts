@@ -1,6 +1,5 @@
 import { Document, Types } from "mongoose";
 import { JSXElementConstructor, ReactNode } from "react";
-import { Type } from "typescript";
 
 /** Server */
 
@@ -10,9 +9,10 @@ export interface IUser extends Document {
   lastName: string;
   password: string;
 }
-export interface IGame extends Document {
+export interface IGame {
+  _id: string;
   title: string;
-  campaign: Types.ObjectId | ICampaign;
+  campaign: string;
 }
 
 export interface ICampaign extends Document {
@@ -97,13 +97,30 @@ export interface CampaignState {
   fetchSessionData: (campaignId: string) => Promise<void>;
 }
 
+// Components
 export interface INavProps {}
 export interface IFooterProps {}
+
+// Pages
 export interface IHomeProps {}
 export interface IAboutProps {}
 export interface IContactProps {}
 export interface IGamesProps {}
 
+// Stores
+
+export interface GameStore {
+  games: IGame[];
+  loading: boolean;
+  error: boolean;
+  getAllGames: () => Promise<void>;
+  getOneGame: (id: string) => Promise<void>;
+  createGame: (game: IGame) => Promise<void>;
+  updateGame: (id: string, game: IGame) => Promise<void>;
+  deleteGame: (id: string) => Promise<void>;
+}
+
+// Config
 export interface IRoute {
   name: string;
   path: string;

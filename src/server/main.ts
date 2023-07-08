@@ -1,5 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import cors from "cors";
 import logging from "./config/logging";
 import config from "./config/config";
 import { connectDB } from "./config/db";
@@ -21,6 +22,8 @@ const app = express();
 connectDB();
 
 /** Config */
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

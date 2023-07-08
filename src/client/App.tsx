@@ -10,7 +10,6 @@ const App: React.FC<IAppProps> = (props) => {
   return (
     <div className="app">
       <Nav />
-      <h1>Welcome to Quill & Blade</h1>
 
       <Routes>
         {routes.map(({ path, element: Component }, key) => (

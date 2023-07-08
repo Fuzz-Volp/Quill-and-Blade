@@ -4,9 +4,9 @@ import { INavProps } from "../../../@types/global";
 
 export const Nav: React.FC<INavProps> = () => {
   return (
-    <div className="flex flex-row">
+    <div className="bg-gray-800 text-white py-4">
       <nav className="">
-        <ul>
+        <ul className="flex flex-row justify-around ">
           <li>
             <Link to={"/"}>🏠</Link>
           </li>
