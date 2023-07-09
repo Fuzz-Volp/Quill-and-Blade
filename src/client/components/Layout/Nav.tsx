@@ -7,7 +7,7 @@ export const Nav: React.FC<INavProps> = () => {
     <div className="bg-gray-800 text-white py-4">
       <nav className="">
         <ul className="flex flex-row justify-around ">
-          <li>
+          <li className="">
             <Link to={"/"}>🏠</Link>
           </li>
           <li>

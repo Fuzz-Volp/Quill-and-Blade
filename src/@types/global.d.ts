@@ -16,6 +16,7 @@ export interface IGame {
 }
 
 export interface ICampaign extends Document {
+  _id: string;
   chapter: Types.ObjectId[] | IChapter;
   day: string;
   progress: string;
