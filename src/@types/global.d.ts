@@ -4,6 +4,7 @@ import { JSXElementConstructor, ReactNode } from "react";
 /** Server */
 
 export interface IUser extends Document {
+  _id: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -32,11 +33,13 @@ export interface ICampaign extends Document {
 }
 
 export interface IChapter extends Document {
+  _id: string;
   title: string;
   story: Types.ObjectId[] | IStory[];
 }
 
 export interface IStory extends Document {
+  _id: string;
   header?: string;
   subheader?: string;
   body: string;
@@ -45,6 +48,7 @@ export interface IStory extends Document {
 }
 
 export interface IPlayer extends Document {
+  _id: string;
   name: string;
   level: number;
   storyline: Types.ObjectId[] | IStoryline[];
@@ -54,6 +58,7 @@ export interface IPlayer extends Document {
 }
 
 export interface IStoryline extends Document {
+  _id: string;
   title: string;
   body: string;
   chapters: Types.ObjectId[] | IChapter;
@@ -63,6 +68,7 @@ export interface IStoryline extends Document {
 }
 
 export interface INPC extends Document {
+  _id: string;
   name: string;
   occupation: string;
   class: string;
@@ -72,17 +78,20 @@ export interface INPC extends Document {
 }
 
 export interface IEncounter extends Document {
+  _id: string;
   title: string;
   link: string;
 }
 
 export interface ISession {
+  _id: string;
   date: Date;
 }
 
 /** Client */
 
 export interface CampaignState {
+  _id: string;
   chapter: number;
   day: string;
   progress: string;
