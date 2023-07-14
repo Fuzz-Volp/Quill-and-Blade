@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { IGamesProps, IGame } from "../../@types/global";
 import { useGameStore } from "../stores/GameStore";
+import { Link } from "react-router-dom";
 
 export const Games: React.FC<IGamesProps> = (props) => {
   const { games, loading, getAllGames, createGame, updateGame, deleteGame } =
@@ -40,7 +41,7 @@ export const Games: React.FC<IGamesProps> = (props) => {
           <ul>
             {games.map((game) => (
               <li key={game._id}>
-                <span>{game.title}</span>
+                <Link to={"/chapter"}>{game.title}</Link>
                 {/* Render other game details */}
                 <button onClick={() => handleUpdateGame(game._id, game)}>
                   Update

@@ -38,12 +38,12 @@ app.use(checkToken);
 
 /** Routes */
 app.use("/api/users", user);
+app.use("/api/game", game);
 app.use("/api/campaign", campaign);
 app.use("/api/chapter", chapter);
-app.use("/api/game", game);
+app.use("/api/story", story);
 app.use("/api/npc", npc);
 app.use("/api/player", player);
-app.use("/api/story", story);
 app.use("/api/storyline", storyline);
 app.use("/api/encounter", encounter);
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useCampaignStore from "../stores/CampaignStore";
 
-const CampaignList = () => {
+export const Campaign = () => {
   const { campaigns, loading, error, getAllCampaigns } = useCampaignStore();
 
   useEffect(() => {
@@ -20,10 +20,14 @@ const CampaignList = () => {
     <div>
       <h2>Campaign List</h2>
       {campaigns.map((campaign) => (
-        <div key={campaign._id}>
-          
-          {/* Render other campaign details */}
-        </div>
+        <span key={campaign._id}>
+          <div>{campaign.day}</div>
+          <div>{campaign.progress}</div>
+
+          <div>{campaign.location}</div>
+
+          <div>{campaign.notes}</div>
+        </span>
       ))}
     </div>
   );

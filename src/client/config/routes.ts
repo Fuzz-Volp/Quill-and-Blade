@@ -1,4 +1,4 @@
-import { Home, About, Contact, Games } from "../pages";
+import { Home, About, Contact, Games, Campaign, TOC, Chapter } from "../pages";
 
 import { IRoute } from "../../@types/global";
 
@@ -13,6 +13,18 @@ const routes: IRoute[] = [
     name: "games",
     path: "/games",
     element: Games,
+    exact: true,
+  },
+  {
+    name: "chapter",
+    path: "/chapter",
+    element: TOC,
+    exact: true,
+  },
+  {
+    name: "campaign",
+    path: "/campaign",
+    element: Campaign,
     exact: true,
   },
   {

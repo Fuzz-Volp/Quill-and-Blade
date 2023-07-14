@@ -32,7 +32,7 @@ export interface ICampaign extends Document {
   getSessionDates(): Date[];
 }
 
-export interface IChapter extends Document {
+export interface IChapter {
   _id: string;
   title: string;
   story: Types.ObjectId[] | IStory[];
@@ -110,12 +110,15 @@ export interface CampaignState {
 // Components
 export interface INavProps {}
 export interface IFooterProps {}
+export interface IChapterFormProps {}
 
 // Pages
 export interface IHomeProps {}
 export interface IAboutProps {}
 export interface IContactProps {}
 export interface IGamesProps {}
+export interface ITOCProps {}
+export interface IChapterProps {}
 
 // Stores
 
@@ -128,6 +131,25 @@ export interface GameStore {
   createGame: (game: IGame) => Promise<void>;
   updateGame: (id: string, game: IGame) => Promise<void>;
   deleteGame: (id: string) => Promise<void>;
+}
+
+export interface CampaignStore {
+  campaigns: ICampaign[];
+  loading: boolean;
+  error: boolean;
+  getAllCampaigns: () => Promise<void>;
+  createCampaign: (campaign: ICampaign) => Promise<void>;
+  updateCampaign: (id: string, campaign: ICampaign) => Promise<void>;
+  deleteCampaign: (id: string) => Promise<void>;
+}
+export interface ChapterStore {
+  chapters: IChapter[];
+  loading: boolean;
+  error: boolean;
+  getAllChapters: () => Promise<void>;
+  createChapter: (chapter: IChapter) => Promise<void>;
+  updateChapter: (id: string, chapter: IChapter) => Promise<void>;
+  deleteChapter: (id: string) => Promise<void>;
 }
 
 // Config
