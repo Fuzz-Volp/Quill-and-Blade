@@ -41,7 +41,7 @@ export const Games: React.FC<IGamesProps> = (props) => {
           <ul>
             {games.map((game) => (
               <li key={game._id}>
-                <Link to={"/chapter"}>{game.title}</Link>
+                <Link to={"/toc"}>{game.title}</Link>
                 {/* Render other game details */}
                 <button onClick={() => handleUpdateGame(game._id, game)}>
                   Update

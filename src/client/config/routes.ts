@@ -1,4 +1,4 @@
-import { Home, About, Contact, Games, Campaign, TOC, Chapter } from "../pages";
+import { Home, About, Contact, Games, Campaign, TOfC, Chapter } from "../pages";
 
 import { IRoute } from "../../@types/global";
 
@@ -16,9 +16,15 @@ const routes: IRoute[] = [
     exact: true,
   },
   {
+    name: "tofc",
+    path: "/tofc",
+    element: TOfC,
+    exact: true,
+  },
+  {
     name: "chapter",
     path: "/chapter",
-    element: TOC,
+    element: Chapter,
     exact: true,
   },
   {

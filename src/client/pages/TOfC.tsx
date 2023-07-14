@@ -22,7 +22,7 @@ export const TOfC: React.FC<ITOCProps> = () => {
   return (
     <div>
       <h2>Chapters</h2>
-      <Link to={}>
+      <Link to={element}>
         {chapters.map((chapter) => (
           <div key={chapter._id}>{chapter.title}</div>
         ))}
