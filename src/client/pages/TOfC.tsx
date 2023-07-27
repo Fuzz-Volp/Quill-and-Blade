@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { ITOCProps } from "../../@types/global";
 import useChapterStore from "../stores/ChapterStore";
 import { Link } from "react-router-dom";
+import routes from "../config/routes";
 
 export const TOfC: React.FC<ITOCProps> = () => {
   const { chapters, loading, error, getAllChapters, createChapter } =
@@ -21,8 +22,7 @@ export const TOfC: React.FC<ITOCProps> = () => {
 
   return (
     <div>
-      <h2>Chapters</h2>
-      <Link to={element}>
+      <Link to={"/chapter"}>
         {chapters.map((chapter) => (
           <div key={chapter._id}>{chapter.title}</div>
         ))}
