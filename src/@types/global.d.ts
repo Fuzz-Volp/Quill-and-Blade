@@ -13,12 +13,12 @@ export interface IUser extends Document {
 export interface IGame {
   _id: string;
   title: string;
-  campaign: string;
+  campaigns: ICampaign[];
 }
 
 export interface ICampaign extends Document {
   _id: string;
-  chapter: Types.ObjectId[] | IChapter;
+  chapters: IChapter[];
   day: string;
   progress: string;
   player: Types.ObjectId[] | IPlayer;
@@ -35,7 +35,7 @@ export interface ICampaign extends Document {
 export interface IChapter {
   _id: string;
   title: string;
-  story: Types.ObjectId[] | IStory[];
+  story: IStory[];
 }
 
 export interface IStory extends Document {
