@@ -17,7 +17,7 @@ export const Games: React.FC<IGamesProps> = (props) => {
     const newGame: IGame = {
       _id: "",
       title: "",
-      campaigns: [ICampaign],
+      campaigns: [],
     };
     createGame(newGame);
   };
