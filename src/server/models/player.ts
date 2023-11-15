@@ -5,7 +5,7 @@ const PlayerSchema: Schema = new Schema(
   {
     name: { type: String, required: true },
     level: { type: Number, default: 1 },
-    storyline: [{ type: Types.ObjectId, ref: "Storyline" }],
+
     completedSessions: { type: Number, default: 0 },
     character: String,
     notes: String,

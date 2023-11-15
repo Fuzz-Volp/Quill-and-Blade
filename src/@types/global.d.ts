@@ -10,6 +10,7 @@ export interface IUser extends Document {
   lastName: string;
   password: string;
 }
+
 export interface IGame {
   _id: string;
   title: string;

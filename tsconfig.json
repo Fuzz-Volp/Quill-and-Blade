@@ -19,6 +19,6 @@
   "ts-node": {
     "esm": true
   },
-  "include": ["src/**/*.ts", "src/server/main.ts"],
+  "include": ["src/**/*.ts", "src/server/server.ts"],
   "exclude": ["node_modules", "**/*.test.ts"]
 }

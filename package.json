@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "server": "nodemon --esm src/server/main.ts -w src/server",
+    "server": "nodemon --esm src/server/server.ts -w src/server",
     "start": "NODE_ENV=production ts-node src/server/main.ts",
     "build": "vite build",
     "build:client": "vite build --outDir dist/client",
